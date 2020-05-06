@@ -12,10 +12,12 @@ public class Playbook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     @JoinTable(name = "playbook_line", joinColumns = {
             @JoinColumn(name = "playbook_id", referencedColumnName = "id",
                     nullable = false, updatable = false)},
