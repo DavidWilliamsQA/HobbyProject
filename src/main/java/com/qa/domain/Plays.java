@@ -1,25 +1,28 @@
 package com.qa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Plays {
+//@Table(name = "plays")
+public class Plays implements Serializable {
 
+    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
+    private final List<Playbook> playbooks = new ArrayList<>();
+    private String description;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long play_id;
-    private String description;
+    private Long id;
 
-    public Long getPlay_id() {
-        return play_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setPlay_id(Long play_id) {
-        this.play_id = play_id;
+    public void setId(Long play_id) {
+        this.id = play_id;
     }
 
     public String getDescription() {
@@ -35,12 +38,12 @@ public class Plays {
         if (this == o) return true;
         if (!(o instanceof Plays)) return false;
         Plays plays = (Plays) o;
-        return getPlay_id().equals(plays.getPlay_id()) &&
+        return getId().equals(plays.getId()) &&
                 getDescription().equals(plays.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPlay_id(), getDescription());
+        return Objects.hash(getId(), getDescription());
     }
 }
