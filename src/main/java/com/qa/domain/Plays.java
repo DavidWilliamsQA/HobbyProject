@@ -9,12 +9,13 @@ import java.util.Objects;
 //@Table(name = "plays")
 public class Plays{
 
-    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
-    private final List<Playbook> playbooks = new ArrayList<>();
-    private String description;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String description;
+
+    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
+    private final List<Playbook> playbooks = new ArrayList<>();
 
     public Long getId() {
         return id;

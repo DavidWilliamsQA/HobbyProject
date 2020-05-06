@@ -9,19 +9,27 @@ import java.util.Objects;
 //@Table(name = "playbook")
 public class Playbook {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "playbook_line", joinColumns = {
             @JoinColumn(name = "playbook_id", referencedColumnName = "id",
                     nullable = false, updatable = false)},
-    inverseJoinColumns = {
-            @JoinColumn(name = "play_id", referencedColumnName = "id",
-                    nullable = false, updatable = false)})
+            inverseJoinColumns = {
+                    @JoinColumn(name = "play_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
     private final List<Plays> plays = new ArrayList<>();
-    private Long user_id;
-    private String name;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+
+    public Playbook() {
+    }
+
+    public Playbook(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -29,14 +37,6 @@ public class Playbook {
 
     public void setId(Long playbook_id) {
         this.id = playbook_id;
-    }
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
     }
 
     public String getName() {
@@ -53,12 +53,11 @@ public class Playbook {
         if (!(o instanceof Playbook)) return false;
         Playbook playbook = (Playbook) o;
         return getId().equals(playbook.getId()) &&
-                getUser_id().equals(playbook.getUser_id()) &&
                 getName().equals(playbook.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUser_id(), getName());
+        return Objects.hash(getId(), getName());
     }
 }
