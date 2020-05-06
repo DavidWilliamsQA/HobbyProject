@@ -1,4 +1,4 @@
-package com.qa.rest;
+package com.qa.services;
 
 import com.qa.domain.Plays;
 import com.qa.dto.PlayDTO;

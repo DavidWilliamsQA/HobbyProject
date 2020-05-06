@@ -1,4 +1,4 @@
-package com.qa.rest;
+package com.qa.services;
 
 import com.qa.domain.Playbook;
 import com.qa.dto.PlaybookDTO;
