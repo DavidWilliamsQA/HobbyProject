@@ -1,14 +1,13 @@
 package com.qa.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 //@Table(name = "plays")
-public class Plays implements Serializable {
+public class Plays{
 
     @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
     private final List<Playbook> playbooks = new ArrayList<>();
