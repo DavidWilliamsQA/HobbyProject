@@ -24,7 +24,7 @@ public class Playbook {
             inverseJoinColumns = {
                     @JoinColumn(name = "play_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private final List<Plays> plays = new ArrayList<>();
+    private List<Plays> plays = new ArrayList<>();
 
     public Playbook() {
     }
@@ -47,6 +47,14 @@ public class Playbook {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Plays> getPlays() {
+        return plays;
+    }
+
+    public void setPlays(List<Plays> plays) {
+        this.plays = plays;
     }
 
     @Override
