@@ -14,10 +14,7 @@ public class Playbook {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "playbook_line", joinColumns = {
             @JoinColumn(name = "playbook_id", referencedColumnName = "id",
                     nullable = false, updatable = false)},
