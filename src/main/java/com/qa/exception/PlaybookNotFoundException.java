@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.persistence.EntityNotFoundException;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "The play doesn't exist")
-public class PlayNotFoundException extends EntityNotFoundException {
+@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "The playbook doesn't exist")
+public class PlaybookNotFoundException extends EntityNotFoundException {
 }

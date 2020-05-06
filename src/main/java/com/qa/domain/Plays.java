@@ -1,25 +1,28 @@
 package com.qa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Plays {
+//@Table(name = "plays")
+public class Plays{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long play_id;
+    private Long id;
     private String description;
 
-    public Long getPlay_id() {
-        return play_id;
+    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
+    private List<Playbook> playbooks = new ArrayList<>();
+
+    public Long getId() {
+        return id;
     }
 
-    public void setPlay_id(Long play_id) {
-        this.play_id = play_id;
+    public void setId(Long play_id) {
+        this.id = play_id;
     }
 
     public String getDescription() {
@@ -30,17 +33,25 @@ public class Plays {
         this.description = description;
     }
 
+    public List<Playbook> getPlaybooks() {
+        return playbooks;
+    }
+
+    public void setPlaybooks(List<Playbook> playbooks) {
+        this.playbooks = playbooks;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Plays)) return false;
         Plays plays = (Plays) o;
-        return getPlay_id().equals(plays.getPlay_id()) &&
+        return getId().equals(plays.getId()) &&
                 getDescription().equals(plays.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPlay_id(), getDescription());
+        return Objects.hash(getId(), getDescription());
     }
 }

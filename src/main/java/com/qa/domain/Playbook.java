@@ -1,34 +1,44 @@
 package com.qa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+//@Table(name = "playbook")
 public class Playbook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long playbook_id;
-    private Long user_id;
+    private Long id;
     private String name;
 
-    public Long getPlaybook_id() {
-        return playbook_id;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
+    @JoinTable(name = "playbook_line", joinColumns = {
+            @JoinColumn(name = "playbook_id", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "play_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private List<Plays> plays = new ArrayList<>();
+
+    public Playbook() {
     }
 
-    public void setPlaybook_id(Long playbook_id) {
-        this.playbook_id = playbook_id;
+    public Playbook(String name) {
+        this.name = name;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setId(Long playbook_id) {
+        this.id = playbook_id;
     }
 
     public String getName() {
@@ -39,18 +49,25 @@ public class Playbook {
         this.name = name;
     }
 
+    public List<Plays> getPlays() {
+        return plays;
+    }
+
+    public void setPlays(List<Plays> plays) {
+        this.plays = plays;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Playbook)) return false;
         Playbook playbook = (Playbook) o;
-        return getPlaybook_id().equals(playbook.getPlaybook_id()) &&
-                getUser_id().equals(playbook.getUser_id()) &&
+        return getId().equals(playbook.getId()) &&
                 getName().equals(playbook.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPlaybook_id(), getUser_id(), getName());
+        return Objects.hash(getId(), getName());
     }
 }
