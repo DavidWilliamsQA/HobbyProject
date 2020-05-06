@@ -9,7 +9,6 @@ public class PlayDTO {
 
     private Long id;
     private String description;
-    private List<PlaybookDTO> playbooks;
 
     public PlayDTO() {
     }
@@ -34,11 +33,4 @@ public class PlayDTO {
         this.description = description;
     }
 
-    public List<PlaybookDTO> getPlaybooks() {
-        return playbooks;
-    }
-
-    public void setPlaybooks(List<PlaybookDTO> playbooks) {
-        this.playbooks = playbooks;
-    }
 }

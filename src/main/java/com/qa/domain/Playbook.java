@@ -14,17 +14,14 @@ public class Playbook {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "playbook_line", joinColumns = {
             @JoinColumn(name = "playbook_id", referencedColumnName = "id",
                     nullable = false, updatable = false)},
             inverseJoinColumns = {
                     @JoinColumn(name = "play_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private List<Plays> plays = new ArrayList<>();
+    private final List<Plays> plays = new ArrayList<>();
 
     public Playbook() {
     }
@@ -51,10 +48,6 @@ public class Playbook {
 
     public List<Plays> getPlays() {
         return plays;
-    }
-
-    public void setPlays(List<Plays> plays) {
-        this.plays = plays;
     }
 
     @Override
