@@ -2,13 +2,14 @@ package com.qa.dto;
 
 import com.qa.domain.Plays;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlaybookDTO {
 
     private Long id;
     private String name;
-    private List<PlayDTO> plays;
+    private List<PlayDTO> plays = new ArrayList<>();
 
     public Long getId() {
         return id;

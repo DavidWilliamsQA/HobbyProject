@@ -1,4 +1,4 @@
-package com.qa.rest;
+package com.qa.services;
 
 import com.qa.domain.Plays;
 import com.qa.dto.PlayDTO;
@@ -44,7 +44,7 @@ public class PlayService {
     public PlayDTO updatePlay(Long id, Plays plays){
         Plays update = this.repo.findById(id).orElseThrow(PlayNotFoundException::new);
         update.setDescription(plays.getDescription());
-        Plays tempPlay = this.repo.save(plays);
+        Plays tempPlay = this.repo.save(update);
         return this.mapToDTO(tempPlay);
     }
 

@@ -15,7 +15,7 @@ public class Plays{
     private String description;
 
     @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
-    private List<Playbook> playbooks = new ArrayList<>();
+    private final List<Playbook> playbooks = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -37,9 +37,6 @@ public class Plays{
         return playbooks;
     }
 
-    public void setPlaybooks(List<Playbook> playbooks) {
-        this.playbooks = playbooks;
-    }
 
     @Override
     public boolean equals(Object o) {
