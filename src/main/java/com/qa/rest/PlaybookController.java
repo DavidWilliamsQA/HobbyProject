@@ -31,6 +31,11 @@ public class PlaybookController {
         return new ResponseEntity<PlaybookDTO>(this.service.createPlaybook(playbook), HttpStatus.CREATED);
     }
 
+    @PutMapping("/addPlaysToPlaybook/{id}")
+    public ResponseEntity<PlaybookDTO> addPlaysToPlaybook(@PathVariable Long id, @RequestBody Long play){
+        return ResponseEntity.ok(this.service.addPlays(id, play));
+    }
+
     @DeleteMapping("/deletePlaybook/{id}")
     public ResponseEntity<?> deletePlaybook(@PathVariable Long id){
         return this.service.deletePlaybook(id)

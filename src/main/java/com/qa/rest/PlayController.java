@@ -21,7 +21,7 @@ public class PlayController {
         this.service = service;
     }
 
-    @GetMapping("/getAllPays")
+    @GetMapping("/getAllPlays")
     public ResponseEntity<List<PlayDTO>> getAllPlays(){
         return ResponseEntity.ok(this.service.readPlays());
     }
