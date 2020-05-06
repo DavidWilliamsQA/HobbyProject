@@ -49,7 +49,7 @@ public class PlaybookService {
         return this.mapToDTO(tempPlaybook);
     }
 
-    public boolean deletePlay(Long id){
+    public boolean deletePlaybook(Long id){
         if(!this.repo.existsById(id)){
             throw new PlaybookNotFoundException();
         }
