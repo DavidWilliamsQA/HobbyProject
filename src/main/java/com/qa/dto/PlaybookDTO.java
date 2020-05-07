@@ -4,11 +4,13 @@ import com.qa.domain.Plays;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PlaybookDTO {
 
     private Long id;
     private String name;
+
     private List<PlayDTO> plays = new ArrayList<>();
 
     public Long getId() {
@@ -33,5 +35,20 @@ public class PlaybookDTO {
 
     public void setPlays(List<PlayDTO> plays) {
         this.plays = plays;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlaybookDTO)) return false;
+        PlaybookDTO that = (PlaybookDTO) o;
+        return getId().equals(that.getId()) &&
+                getName().equals(that.getName()) &&
+                getPlays().equals(that.getPlays());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getPlays());
     }
 }

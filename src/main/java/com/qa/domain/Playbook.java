@@ -1,12 +1,10 @@
 package com.qa.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
-//@Table(name = "playbook")
+@Table(name = "playbook")
 public class Playbook {
 
     @Id
@@ -56,11 +54,12 @@ public class Playbook {
         if (!(o instanceof Playbook)) return false;
         Playbook playbook = (Playbook) o;
         return getId().equals(playbook.getId()) &&
-                getName().equals(playbook.getName());
+                getName().equals(playbook.getName()) &&
+                getPlays().equals(playbook.getPlays());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(getId(), getName(), getPlays());
     }
 }
