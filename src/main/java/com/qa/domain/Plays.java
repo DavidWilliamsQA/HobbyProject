@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "plays")
+@Table(name = "plays")
 public class Plays{
 
     @Id

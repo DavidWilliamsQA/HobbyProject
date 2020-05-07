@@ -1,12 +1,10 @@
 package com.qa.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
-//@Table(name = "playbook")
+@Table(name = "playbook")
 public class Playbook {
 
     @Id
@@ -21,7 +19,7 @@ public class Playbook {
             inverseJoinColumns = {
                     @JoinColumn(name = "play_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private final List<Plays> plays = new ArrayList<>();
+    private final Set<Plays> plays = new HashSet<>();
 
     public Playbook() {
     }
@@ -46,7 +44,7 @@ public class Playbook {
         this.name = name;
     }
 
-    public List<Plays> getPlays() {
+    public Set<Plays> getPlays() {
         return plays;
     }
 
