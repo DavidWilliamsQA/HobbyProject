@@ -51,11 +51,12 @@ public class Plays{
         if (!(o instanceof Plays)) return false;
         Plays plays = (Plays) o;
         return getId().equals(plays.getId()) &&
-                getDescription().equals(plays.getDescription());
+                getDescription().equals(plays.getDescription()) &&
+                getPlaybooks().equals(plays.getPlaybooks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDescription());
+        return Objects.hash(getId(), getDescription(), getPlaybooks());
     }
 }
