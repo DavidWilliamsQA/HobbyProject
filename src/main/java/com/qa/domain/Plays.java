@@ -17,6 +17,13 @@ public class Plays{
     @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
     private final List<Playbook> playbooks = new ArrayList<>();
 
+    public Plays() {
+    }
+
+    public Plays(String description) {
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }
