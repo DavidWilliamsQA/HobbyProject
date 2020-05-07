@@ -10,6 +10,7 @@ public class PlaybookDTO {
 
     private Long id;
     private String name;
+
     private List<PlayDTO> plays = new ArrayList<>();
 
     public Long getId() {

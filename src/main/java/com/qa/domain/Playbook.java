@@ -19,7 +19,7 @@ public class Playbook {
             inverseJoinColumns = {
                     @JoinColumn(name = "play_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private final Set<Plays> plays = new HashSet<>();
+    private final List<Plays> plays = new ArrayList<>();
 
     public Playbook() {
     }
@@ -44,7 +44,7 @@ public class Playbook {
         this.name = name;
     }
 
-    public Set<Plays> getPlays() {
+    public List<Plays> getPlays() {
         return plays;
     }
 
@@ -54,11 +54,12 @@ public class Playbook {
         if (!(o instanceof Playbook)) return false;
         Playbook playbook = (Playbook) o;
         return getId().equals(playbook.getId()) &&
-                getName().equals(playbook.getName());
+                getName().equals(playbook.getName()) &&
+                getPlays().equals(playbook.getPlays());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(getId(), getName(), getPlays());
     }
 }
