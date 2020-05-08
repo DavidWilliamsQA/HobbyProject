@@ -11,6 +11,18 @@ public class PlaybookDTO {
 
     private Set<PlayDTO> plays = new HashSet<>();
 
+    public PlaybookDTO(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public PlaybookDTO(String name) {
+        this.name = name;
+    }
+
+    public PlaybookDTO() {
+    }
+
     public Long getId() {
         return id;
     }
