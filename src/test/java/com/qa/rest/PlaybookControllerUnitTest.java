@@ -1,8 +1,10 @@
 package com.qa.rest;
 
 import com.qa.domain.Playbook;
+import com.qa.domain.Plays;
 import com.qa.dto.PlayDTO;
 import com.qa.dto.PlaybookDTO;
+import com.qa.services.PlayService;
 import com.qa.services.PlaybookService;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +37,7 @@ public class PlaybookControllerUnitTest {
     private Playbook testPlaybookWithId;
     private Long id = 1L;
     private PlaybookDTO playbookDTO;
+    private Plays testPlay;
 
     private final ModelMapper mapper = new ModelMapper();
 
@@ -50,6 +53,7 @@ public class PlaybookControllerUnitTest {
         this.testPlaybookWithId = new Playbook(testPlaybook.getName());
         this.testPlaybookWithId.setId(this.id);
         this.playbookDTO = this.mapToDTO(testPlaybookWithId);
+        this.testPlay = new Plays("Trap");
     }
 
     @Test
@@ -84,6 +88,27 @@ public class PlaybookControllerUnitTest {
         when(this.playbookService.findPlaybookById(id)).thenReturn(this.playbookDTO);
         assertEquals(this.playbookController.getPlaybookById(id), new ResponseEntity<PlaybookDTO>(this.playbookDTO, HttpStatus.OK));
         verify(playbookService, times(1)).findPlaybookById(id);
+    }
+
+    @Test
+    public void updatePlaybook(){
+        this.playbookController.updatePlaybook(id, testPlaybook);
+        verify(playbookService, times(1)).updatePlaybook(id, testPlaybook);
+
+    }
+
+    @Test
+    public void updatePlaybookById(){
+        this.playbookController.updatePlaybookById(id, testPlaybook);
+        verify(playbookService, times(1)).updatePlaybook(id, testPlaybook);
+
+    }
+
+    @Test
+    public void addPlayToPlaybook(){
+        this.playbookController.addPlaysToPlaybook(id, testPlay.getId());
+        verify(playbookService, times(1)).addPlays(id, testPlay.getId());
+
     }
 
 }

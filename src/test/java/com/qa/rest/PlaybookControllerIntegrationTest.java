@@ -109,5 +109,19 @@ public class PlaybookControllerIntegrationTest {
         ).andExpect(status().isNoContent());
     }
 
+    @Test
+    public void updatePlaybookByIdTest() throws Exception {
+        String content = this.mock.perform(
+                request(HttpMethod.PUT, "/updatePlaybook/" + this.id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(testPlaybook))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(playbookDTO));
+    }
 
 }
