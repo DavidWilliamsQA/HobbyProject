@@ -12,6 +12,13 @@ public class Playbook {
     private Long id;
     private String name;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "playbook_line", joinColumns = {
+            @JoinColumn(name = "playbook_id", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "play_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
     private final Set<Plays> plays = new HashSet<>();
 
     public Playbook() {
