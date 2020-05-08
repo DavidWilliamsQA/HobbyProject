@@ -2,10 +2,6 @@ package com.qa.dto;
 
 import com.qa.domain.Plays;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import java.util.*;
 
 public class PlaybookDTO {
@@ -13,13 +9,6 @@ public class PlaybookDTO {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "playbook_line", joinColumns = {
-            @JoinColumn(name = "playbook_id", referencedColumnName = "id",
-                    nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "play_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)})
     private Set<PlayDTO> plays = new HashSet<>();
 
     public Long getId() {

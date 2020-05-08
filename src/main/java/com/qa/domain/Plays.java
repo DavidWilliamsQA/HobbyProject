@@ -14,7 +14,7 @@ public class Plays{
     private Long id;
     private String description;
 
-    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "plays", fetch = FetchType.EAGER)
     private final List<Playbook> playbooks = new ArrayList<>();
 
     public Plays() {
