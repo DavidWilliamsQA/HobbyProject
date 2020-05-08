@@ -18,6 +18,11 @@ public class Plays{
     public Plays() {
     }
 
+    public Plays(Long id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     public Plays(String description) {
         this.description = description;
     }

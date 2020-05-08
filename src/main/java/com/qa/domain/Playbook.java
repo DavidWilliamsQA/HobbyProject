@@ -22,6 +22,12 @@ public class Playbook {
     private final Set<Plays> plays = new HashSet<>();
 
     public Playbook() {
+
+    }
+
+    public Playbook(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Playbook(String name) {
