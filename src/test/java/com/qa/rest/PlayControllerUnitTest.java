@@ -85,4 +85,18 @@ public class PlayControllerUnitTest {
         assertEquals(this.playController.getPlayById(id), new ResponseEntity<PlayDTO>(this.playDTO,HttpStatus.OK));
         verify(playService, times(1)).findPlayById(id);
     }
+
+    @Test
+    public void updatePlay(){
+        this.playController.updatePlay(id, testPlays);
+        verify(playService, times(1)).updatePlay(id, testPlays);
+
+    }
+
+    @Test
+    public void updatePlayById(){
+        this.playController.updatePlayById(id, testPlays);
+        verify(playService, times(1)).updatePlay(id, testPlays);
+
+    }
 }
