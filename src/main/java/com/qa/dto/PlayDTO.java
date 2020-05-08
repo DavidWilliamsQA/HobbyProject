@@ -4,6 +4,7 @@ import com.qa.domain.Playbook;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PlayDTO {
 
@@ -11,6 +12,11 @@ public class PlayDTO {
     private String description;
 
     public PlayDTO() {
+    }
+
+    public PlayDTO(Long id, String description) {
+        this.id = id;
+        this.description = description;
     }
 
     public PlayDTO(String description) {
@@ -33,4 +39,17 @@ public class PlayDTO {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlayDTO)) return false;
+        PlayDTO playDTO = (PlayDTO) o;
+        return getId().equals(playDTO.getId()) &&
+                getDescription().equals(playDTO.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDescription());
+    }
 }

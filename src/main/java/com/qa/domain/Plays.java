@@ -1,12 +1,10 @@
 package com.qa.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
-//@Table(name = "plays")
+@Table(name = "plays")
 public class Plays{
 
     @Id
@@ -14,10 +12,15 @@ public class Plays{
     private Long id;
     private String description;
 
-    @ManyToMany(mappedBy = "plays", fetch = FetchType.LAZY)
-    private final List<Playbook> playbooks = new ArrayList<>();
+    @ManyToMany(mappedBy = "plays", fetch = FetchType.EAGER)
+    private final Set<Playbook> playbooks = new HashSet<>();
 
     public Plays() {
+    }
+
+    public Plays(Long id, String description) {
+        this.id = id;
+        this.description = description;
     }
 
     public Plays(String description) {
@@ -40,7 +43,7 @@ public class Plays{
         this.description = description;
     }
 
-    public List<Playbook> getPlaybooks() {
+    public Set<Playbook> getPlaybooks() {
         return playbooks;
     }
 
@@ -51,11 +54,12 @@ public class Plays{
         if (!(o instanceof Plays)) return false;
         Plays plays = (Plays) o;
         return getId().equals(plays.getId()) &&
-                getDescription().equals(plays.getDescription());
+                getDescription().equals(plays.getDescription()) &&
+                getPlaybooks().equals(plays.getPlaybooks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDescription());
+        return Objects.hash(getId(), getDescription(), getPlaybooks());
     }
 }
