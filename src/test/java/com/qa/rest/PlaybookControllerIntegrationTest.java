@@ -18,7 +18,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
@@ -59,7 +61,7 @@ public class PlaybookControllerIntegrationTest {
 
     @Test
     public void getAllPlaybooksTest() throws Exception{
-        List<PlaybookDTO> playbookDTOList = new ArrayList<>();
+        Set<PlaybookDTO> playbookDTOList = new HashSet<>();
         playbookDTOList.add(playbookDTO);
         String content = this.mock.perform(
                 request(HttpMethod.GET, "/getAllPlaybooks")

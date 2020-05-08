@@ -50,7 +50,7 @@ public class PlayServiceIntegrationTest {
     public void readPlaysTest(){
         assertThat(this.service.readPlays())
                 .isEqualTo(
-                        Stream.of(this.mapToDTO(testPlayWithId)).collect(Collectors.toList())
+                        Stream.of(this.mapToDTO(testPlayWithId)).collect(Collectors.toSet())
                 );
     }
 

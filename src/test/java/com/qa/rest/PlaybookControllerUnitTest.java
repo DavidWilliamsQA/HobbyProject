@@ -14,9 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
@@ -32,7 +30,7 @@ public class PlaybookControllerUnitTest {
     @Mock
     private PlaybookService playbookService;
 
-    private List<Playbook> playbooks;
+    private Set<Playbook> playbooks;
     private Playbook testPlaybook;
     private Playbook testPlaybookWithId;
     private Long id = 1L;
@@ -46,7 +44,7 @@ public class PlaybookControllerUnitTest {
 
     @Before
     public void setUp(){
-        this.playbooks = new ArrayList<>();
+        this.playbooks = new HashSet<>();
         this.testPlaybook = new Playbook("Tyrants");
         this.playbooks.add(testPlaybook);
         this.testPlaybookWithId = new Playbook(testPlaybook.getName());

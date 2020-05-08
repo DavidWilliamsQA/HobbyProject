@@ -54,7 +54,7 @@ public class PlayControllerUnitTest {
 
     @Test
     public void getAllPlaysTest(){
-        when(playService.readPlays()).thenReturn(this.plays.stream().map(this::mapToDTO).collect(Collectors.toList()));
+        when(playService.readPlays()).thenReturn(this.plays.stream().map(this::mapToDTO).collect(Collectors.toSet()));
         assertFalse("No play found", this.playController.getAllPlays().getBody().isEmpty());
         verify(this.playService, times(1)).readPlays();
     }
