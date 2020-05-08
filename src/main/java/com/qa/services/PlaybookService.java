@@ -35,8 +35,8 @@ public class PlaybookService {
         return this.mapper.map(playbook, PlaybookDTO.class);
     }
 
-    public Set<PlaybookDTO> readPlaybooks(){
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
+    public List<PlaybookDTO> readPlaybooks(){
+        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public PlaybookDTO createPlaybook(Playbook playbook){

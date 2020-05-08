@@ -9,7 +9,7 @@ public class PlaybookDTO {
     private Long id;
     private String name;
 
-    private Set<PlayDTO> plays = new HashSet<>();
+    private List<PlayDTO> plays = new ArrayList<>();
 
     public PlaybookDTO(Long id, String name) {
         this.id = id;
@@ -39,11 +39,11 @@ public class PlaybookDTO {
         this.name = name;
     }
 
-    public Set<PlayDTO> getPlays() {
+    public List<PlayDTO> getPlays() {
         return plays;
     }
 
-    public void setPlays(Set<PlayDTO> plays) {
+    public void setPlays(List<PlayDTO> plays) {
         this.plays = plays;
     }
 
