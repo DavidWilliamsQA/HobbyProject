@@ -23,7 +23,7 @@ public class PlaybookController {
     }
 
     @GetMapping("/getAllPlaybooks")
-    public ResponseEntity<Set<PlaybookDTO>> getAllPlaybooks(){
+    public ResponseEntity<List<PlaybookDTO>> getAllPlaybooks(){
         return ResponseEntity.ok(this.service.readPlaybooks());
     }
 

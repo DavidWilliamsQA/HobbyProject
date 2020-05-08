@@ -19,7 +19,7 @@ public class Playbook {
             inverseJoinColumns = {
                     @JoinColumn(name = "play_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private final Set<Plays> plays = new HashSet<>();
+    private final List<Plays> plays = new ArrayList<>();
 
     public Playbook() {
 
@@ -50,7 +50,7 @@ public class Playbook {
         this.name = name;
     }
 
-    public Set<Plays> getPlays() {
+    public List<Plays> getPlays() {
         return plays;
     }
 

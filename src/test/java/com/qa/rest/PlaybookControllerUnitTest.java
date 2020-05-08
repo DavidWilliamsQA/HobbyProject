@@ -54,7 +54,7 @@ public class PlaybookControllerUnitTest {
 
     @Test
     public void getAllPlaybooksTest(){
-        when(playbookService.readPlaybooks()).thenReturn(this.playbooks.stream().map(this::mapToDTO).collect(Collectors.toSet()));
+        when(playbookService.readPlaybooks()).thenReturn(this.playbooks.stream().map(this::mapToDTO).collect(Collectors.toList()));
         assertFalse("Playbook not found", Objects.requireNonNull(this.playbookController.getAllPlaybooks().getBody()).isEmpty());
         verify(playbookService, times(1)).readPlaybooks();
     }

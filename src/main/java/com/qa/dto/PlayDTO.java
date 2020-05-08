@@ -14,6 +14,11 @@ public class PlayDTO {
     public PlayDTO() {
     }
 
+    public PlayDTO(Long id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     public PlayDTO(String description) {
         this.description = description;
     }
