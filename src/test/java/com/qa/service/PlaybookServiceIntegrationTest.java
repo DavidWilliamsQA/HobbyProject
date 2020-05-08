@@ -54,10 +54,11 @@ public class PlaybookServiceIntegrationTest {
 //    public void readPlaybookTest(){
 //        assertThat(this.service.readPlaybooks())
 //                .isEqualTo(
-//                        Stream.of(this.mapToDTO(testPlaybookWithId)).collect(Collectors.toList())
+//                        Stream.of(this.mapToDTO(testPlaybookWithId)).collect(Collectors.toSet())
 //                );
 //    }
 
+    @Test
     public void createPlaybookTest(){
         assertEquals(this.mapToDTO(this.testPlaybookWithId), this.service.createPlaybook(testPlaybook));
     }
