@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.domain.Plays;
 import com.qa.dto.PlayDTO;
 import com.qa.repo.PlaysRepository;
+import com.qa.services.PlayService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,13 +25,18 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PlayControllerIntegrationTest {
+
+    @InjectMocks
+    private PlayService service;
 
     @Autowired
     private MockMvc mock;
@@ -60,7 +68,7 @@ public class PlayControllerIntegrationTest {
 
     @Test
     public void getAllPlaysTest() throws Exception{
-        Set<PlayDTO> playDTOList = new HashSet<>();
+        List<PlayDTO> playDTOList = new ArrayList<>();
         playDTOList.add(playDTO);
         String content = this.mock.perform(
                 request(HttpMethod.GET, "/getAllPlays")
@@ -108,5 +116,19 @@ public class PlayControllerIntegrationTest {
         ).andExpect(status().isNoContent());
     }
 
+    @Test
+    public void updatePlayByIdTest() throws Exception {
+        String content = this.mock.perform(
+                request(HttpMethod.PUT, "/updatePlay/" + this.id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(testPlays))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(playDTO));
+    }
 
 }
