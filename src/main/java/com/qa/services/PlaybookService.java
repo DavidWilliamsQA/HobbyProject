@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,8 +35,8 @@ public class PlaybookService {
         return this.mapper.map(playbook, PlaybookDTO.class);
     }
 
-    public List<PlaybookDTO> readPlaybooks(){
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+    public Set<PlaybookDTO> readPlaybooks(){
+        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
     }
 
     public PlaybookDTO createPlaybook(Playbook playbook){

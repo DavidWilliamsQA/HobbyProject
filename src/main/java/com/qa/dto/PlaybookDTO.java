@@ -2,16 +2,25 @@ package com.qa.dto;
 
 import com.qa.domain.Plays;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.*;
 
 public class PlaybookDTO {
 
     private Long id;
     private String name;
 
-    private List<PlayDTO> plays = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "playbook_line", joinColumns = {
+            @JoinColumn(name = "playbook_id", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "play_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private Set<PlayDTO> plays = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -29,11 +38,11 @@ public class PlaybookDTO {
         this.name = name;
     }
 
-    public List<PlayDTO> getPlays() {
+    public Set<PlayDTO> getPlays() {
         return plays;
     }
 
-    public void setPlays(List<PlayDTO> plays) {
+    public void setPlays(Set<PlayDTO> plays) {
         this.plays = plays;
     }
 
