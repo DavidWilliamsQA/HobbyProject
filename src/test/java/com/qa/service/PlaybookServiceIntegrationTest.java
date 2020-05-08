@@ -50,23 +50,23 @@ public class PlaybookServiceIntegrationTest {
         this.testPlaybookWithId = this.repository.save(this.testPlaybook);
     }
 
-//    @Test
-//    public void readPlaybookTest(){
-//        assertThat(this.service.readPlaybooks())
-//                .isEqualTo(
-//                        Stream.of(this.mapToDTO(testPlaybookWithId)).collect(Collectors.toSet())
-//                );
-//    }
+    @Test
+    public void readPlaybookTest(){
+        assertThat(this.service.readPlaybooks())
+                .isEqualTo(
+                        Stream.of(this.mapToDTO(testPlaybookWithId)).collect(Collectors.toSet())
+                );
+    }
 
     @Test
     public void createPlaybookTest(){
         assertEquals(this.mapToDTO(this.testPlaybookWithId), this.service.createPlaybook(testPlaybook));
     }
 
-//    @Test
-//    public void findPlaybookByIdTest(){
-//        assertThat(this.service.findPlaybookById(this.testPlaybookWithId.getId())).isEqualTo(this.mapToDTO(this.testPlaybookWithId));
-//    }
+    @Test
+    public void findPlaybookByIdTest(){
+        assertThat(this.service.findPlaybookById(this.testPlaybookWithId.getId())).isEqualTo(this.mapToDTO(this.testPlaybookWithId));
+    }
 
     @Test
     public void deletePlaybookTest(){

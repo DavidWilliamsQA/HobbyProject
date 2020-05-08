@@ -12,7 +12,7 @@ public class Playbook {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "playbook_line", joinColumns = {
             @JoinColumn(name = "playbook_id", referencedColumnName = "id",
                     nullable = false, updatable = false)},
