@@ -1,9 +1,7 @@
 package com.qa.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "plays")
@@ -15,7 +13,7 @@ public class Plays{
     private String description;
 
     @ManyToMany(mappedBy = "plays", fetch = FetchType.EAGER)
-    private final List<Playbook> playbooks = new ArrayList<>();
+    private final Set<Playbook> playbooks = new HashSet<>();
 
     public Plays() {
     }
@@ -40,7 +38,7 @@ public class Plays{
         this.description = description;
     }
 
-    public List<Playbook> getPlaybooks() {
+    public Set<Playbook> getPlaybooks() {
         return playbooks;
     }
 

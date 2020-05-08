@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,8 +29,8 @@ public class PlayService {
         return this.mapper.map(plays, PlayDTO.class);
     }
 
-    public List<PlayDTO> readPlays(){
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+    public Set<PlayDTO> readPlays(){
+        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
     }
 
     public PlayDTO createPlays(Plays plays){
