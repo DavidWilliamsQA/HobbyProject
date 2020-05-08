@@ -86,4 +86,18 @@ public class PlaybookControllerUnitTest {
         verify(playbookService, times(1)).findPlaybookById(id);
     }
 
+    @Test
+    public void updatePlaybook(){
+        this.playbookController.updatePlaybook(id, testPlaybook);
+        verify(playbookService, times(1)).updatePlaybook(id, testPlaybook);
+
+    }
+
+    @Test
+    public void updatePlaybookById(){
+        this.playbookController.updatePlaybookById(id, testPlaybook);
+        verify(playbookService, times(1)).updatePlaybook(id, testPlaybook);
+
+    }
+
 }
