@@ -1,6 +1,7 @@
 package com.qa.service;
 
 import com.qa.domain.Playbook;
+import com.qa.dto.PlayDTO;
 import com.qa.dto.PlaybookDTO;
 import com.qa.exception.PlaybookNotFoundException;
 import com.qa.repo.PlaybookRepository;
@@ -91,6 +92,15 @@ public class PlaybookServiceUnitTest {
         verify(repository, times(1)).existsById(id);
     }
 
+    @Test
+    public void updatePlaybookTest(){
+        when(repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlaybook));
+        testPlaybook.setName(testPlaybook.getName());
+        when(this.repository.save(testPlaybook)).thenReturn(testPlaybookWithId);
+        when(this.mapper.map(testPlaybookWithId, PlaybookDTO.class)).thenReturn(playbookDTO);
+        assertEquals(this.service.updatePlaybook(id, testPlaybook), this.playbookDTO);
+        verify(repository,times(1)).save(this.testPlaybook);
+    }
 
 
 
