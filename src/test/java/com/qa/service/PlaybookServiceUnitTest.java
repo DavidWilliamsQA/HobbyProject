@@ -1,9 +1,12 @@
 package com.qa.service;
 
 import com.qa.domain.Playbook;
+import com.qa.domain.Plays;
+import com.qa.dto.PlayDTO;
 import com.qa.dto.PlaybookDTO;
 import com.qa.exception.PlaybookNotFoundException;
 import com.qa.repo.PlaybookRepository;
+import com.qa.repo.PlaysRepository;
 import com.qa.services.PlaybookService;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,11 +33,18 @@ public class PlaybookServiceUnitTest {
     private PlaybookRepository repository;
 
     @Mock
+    private PlaysRepository playsRepository;
+
+    @Mock
     private ModelMapper mapper;
 
+    private Plays testPlays;
     private List<Playbook> playbookList;
     private Playbook testPlaybook;
+    private PlaybookDTO testPlaybookWithPlayDTO;
+    private Playbook testPlaybookWithPlay;
     private Long id = 1L;
+    private Long playId = 1L;
     private Playbook testPlaybookWithId;
     private PlaybookDTO playbookDTO;
 
@@ -44,12 +54,16 @@ public class PlaybookServiceUnitTest {
 
     @Before
     public void SetUp(){
+        this.testPlays = new Plays("test Play");
         this.playbookList = new ArrayList<>();
         this.testPlaybook = new Playbook("test play");
+        this.testPlaybookWithPlay = new Playbook("playbook with play");
         this.playbookList.add(testPlaybook);
         this.testPlaybookWithId = new Playbook(testPlaybook.getName());
         this.testPlaybookWithId.setId(id);
         this.playbookDTO = this.mapToDTO(testPlaybookWithId);
+        this.testPlaybookWithPlay.getPlays().add(testPlays);
+        this.testPlaybookWithPlayDTO = this.mapToDTO(testPlaybookWithPlay);
     }
 
     @Test
@@ -91,6 +105,26 @@ public class PlaybookServiceUnitTest {
         verify(repository, times(1)).existsById(id);
     }
 
+    @Test
+    public void updatePlaybookTest(){
+        when(repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlaybook));
+        testPlaybook.setName(testPlaybook.getName());
+        when(this.repository.save(testPlaybook)).thenReturn(testPlaybookWithId);
+        when(this.mapper.map(testPlaybookWithId, PlaybookDTO.class)).thenReturn(playbookDTO);
+        assertEquals(this.service.updatePlaybook(id, testPlaybook), this.playbookDTO);
+        verify(repository,times(1)).save(this.testPlaybook);
+    }
+
+    @Test
+    public void addPlaysToPlaybook(){
+        when(repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlaybook));
+        when(playsRepository.findById(testPlays.getId())).thenReturn(java.util.Optional.ofNullable(testPlays));
+        testPlaybook.getPlays().add(testPlays);
+        when(this.repository.save(testPlaybook)).thenReturn(testPlaybookWithId);
+        when(this.mapper.map(testPlaybookWithId, PlaybookDTO.class)).thenReturn(testPlaybookWithPlayDTO);
+        assertEquals(this.service.addPlays(id, testPlays.getId()), this.testPlaybookWithPlayDTO);
+        verify(repository,times(1)).save(this.testPlaybook);
+    }
 
 
 
