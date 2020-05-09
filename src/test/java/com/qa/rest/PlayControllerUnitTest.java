@@ -87,14 +87,14 @@ public class PlayControllerUnitTest {
     }
 
     @Test
-    public void updatePlay(){
+    public void updatePlayTest(){
         this.playController.updatePlay(id, testPlays);
         verify(playService, times(1)).updatePlay(id, testPlays);
 
     }
 
     @Test
-    public void updatePlayById(){
+    public void updatePlayByIdTest(){
         this.playController.updatePlayById(id, testPlays);
         verify(playService, times(1)).updatePlay(id, testPlays);
 
