@@ -19,6 +19,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,11 +32,9 @@ public class PlaybookServiceIntegrationTest {
     private PlaybookRepository repository;
 
     @Autowired
-    private PlaysRepository playsRepository;
-
-    @Autowired
     private ModelMapper mapper;
 
+    private Playbook updatePlaybook;
     private Playbook testPlaybook;
     private Playbook testPlaybookWithId;
 
@@ -46,6 +45,7 @@ public class PlaybookServiceIntegrationTest {
     @Before
     public void setUp(){
         this.testPlaybook = new Playbook("test");
+        this.updatePlaybook = new Playbook("update");
         this.repository.deleteAll();
         this.testPlaybookWithId = this.repository.save(this.testPlaybook);
     }
@@ -71,5 +71,10 @@ public class PlaybookServiceIntegrationTest {
     @Test
     public void deletePlaybookTest(){
         assertThat(this.service.deletePlaybook(this.testPlaybookWithId.getId())).isFalse();
+    }
+
+    @Test
+    public void updatePlaybookTest(){
+        assertNotEquals(this.service.updatePlaybook(testPlaybookWithId.getId(), updatePlaybook), this.mapToDTO(this.testPlaybookWithId));
     }
 }

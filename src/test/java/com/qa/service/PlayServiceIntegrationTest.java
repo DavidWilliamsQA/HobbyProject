@@ -36,8 +36,6 @@ public class PlayServiceIntegrationTest {
 
     private Plays testPlayWithId;
 
-    private Long id = 1L;
-
     private Plays updatePlay;
 
     private PlayDTO mapToDTO(Plays plays){
