@@ -16,8 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
@@ -37,6 +36,7 @@ public class PlayServiceUnitTest {
     private Long id = 1L;
     private Plays testPlayWithId;
     private PlayDTO playDTO;
+    private Plays updateTest;
 
     private PlayDTO mapToDTO(Plays plays){
         return this.mapper.map(plays, PlayDTO.class);
@@ -50,6 +50,7 @@ public class PlayServiceUnitTest {
         this.testPlayWithId = new Plays(testPlays.getDescription());
         this.testPlayWithId.setId(id);
         this.playDTO = this.mapToDTO(testPlayWithId);
+        this.updateTest = new Plays();
     }
 
     @Test
@@ -77,7 +78,7 @@ public class PlayServiceUnitTest {
     }
 
     @Test
-    public void deletePlayByExistingId(){
+    public void deletePlayByExistingIdTest(){
         when(this.repository.existsById(id)).thenReturn(true,false);
         assertFalse(service.deletePlay(id));
         verify(repository,times(1)).deleteById(id);
@@ -85,12 +86,21 @@ public class PlayServiceUnitTest {
     }
 
     @Test(expected = PlayNotFoundException.class)
-    public void deletePlayByNonExistingId(){
+    public void deletePlayByNonExistingIdTest(){
         when(this.repository.existsById(id)).thenReturn(false);
         service.deletePlay(id);
         verify(repository, times(1)).existsById(id);
     }
 
+    @Test
+    public void updatePlayTest(){
+        when(repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlays));
+        testPlays.setDescription(testPlays.getDescription());
+        when(this.repository.save(testPlays)).thenReturn(testPlayWithId);
+        when(this.mapper.map(testPlayWithId, PlayDTO.class)).thenReturn(playDTO);
+        assertEquals(this.service.updatePlay(id, testPlays), this.playDTO);
+        verify(repository,times(1)).save(this.testPlays);
+    }
 
 
 
