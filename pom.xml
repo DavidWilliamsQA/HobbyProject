@@ -68,7 +68,7 @@
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>DavidWilliams-SoftwareMarch16${project.artifactId}</finalName>
     <plugins>
 
       <plugin>
