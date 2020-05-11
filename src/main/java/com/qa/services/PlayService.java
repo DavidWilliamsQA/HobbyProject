@@ -29,8 +29,8 @@ public class PlayService {
         return this.mapper.map(plays, PlayDTO.class);
     }
 
-    public Set<PlayDTO> readPlays(){
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
+    public List<PlayDTO> readPlays(){
+        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public PlayDTO createPlays(Plays plays){

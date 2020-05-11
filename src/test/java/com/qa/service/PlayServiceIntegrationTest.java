@@ -48,14 +48,14 @@ public class PlayServiceIntegrationTest {
         this.updatePlay = new Plays("update");
         this.repository.deleteAll();
         this.testPlayWithId = this.repository.save(this.testPlay);
-        this.updatePlay = this.repository.save(this.updatePlay);
+        //this.updatePlay = this.repository.save(this.updatePlay);
     }
 
     @Test
     public void readPlaysTest(){
         assertThat(this.service.readPlays())
                 .isEqualTo(
-                        Stream.of(this.mapToDTO(testPlayWithId)).collect(Collectors.toSet())
+                        Stream.of(this.mapToDTO(testPlayWithId)).collect(Collectors.toList())
                 );
     }
 
