@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.qa</groupId>
-  <artifactId>HobbyProject</artifactId>
+  <artifactId>DavidWilliams-SoftwareMarch16-HobbyProject</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>HobbyProject</name>
@@ -68,7 +68,7 @@
   </dependencies>
 
   <build>
-    <finalName>DavidWilliams-SoftwareMarch16${project.artifactId}</finalName>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
 
       <plugin>
