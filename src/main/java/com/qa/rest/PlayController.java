@@ -23,7 +23,7 @@ public class PlayController {
     }
 
     @GetMapping("/getAllPlays")
-    public ResponseEntity<Set<PlayDTO>> getAllPlays(){
+    public ResponseEntity<List<PlayDTO>> getAllPlays(){
         return ResponseEntity.ok(this.service.readPlays());
     }
 
