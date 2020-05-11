@@ -48,6 +48,7 @@ public class PlayServiceIntegrationTest {
         this.updatePlay = new Plays("update");
         this.repository.deleteAll();
         this.testPlayWithId = this.repository.save(this.testPlay);
+        this.updatePlay = this.repository.save(this.updatePlay);
     }
 
     @Test
