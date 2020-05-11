@@ -8,7 +8,6 @@
   <artifactId>DavidWilliams-SoftwareMarch16-HobbyProject</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>HobbyProject</name>
   <packaging>jar</packaging>
 
   <properties>
