@@ -2,9 +2,11 @@ package com.qa.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.domain.Playbook;
+import com.qa.domain.Plays;
 import com.qa.dto.PlayDTO;
 import com.qa.dto.PlaybookDTO;
 import com.qa.repo.PlaybookRepository;
+import com.qa.repo.PlaysRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,25 +41,56 @@ public class PlaybookControllerIntegrationTest {
     private PlaybookRepository repository;
 
     @Autowired
+    private PlaybookRepository repository2;
+
+    @Autowired
+    private PlaysRepository playsRepository;
+
+    @Autowired
     private ModelMapper mapper;
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private Playbook testPlaybook;
     private Playbook testPlaybookWithId;
+    private Playbook testPlaybookWithPlay;
+    private Playbook testPlaybookWithPlayId;
     private Long id;
+    private Long playId;
     private PlaybookDTO playbookDTO;
+    private PlaybookDTO playbookWithPlayDTO;
+    private Plays testPlays;
+    private Plays testPlaysWithId;
+    private Long id2;
 
     private PlaybookDTO mapToDTO(Playbook playbook){
+        return this.mapper.map(playbook, PlaybookDTO.class);
+    }
+
+    private PlaybookDTO mapToDTOPlays(Playbook playbook){
         return this.mapper.map(playbook, PlaybookDTO.class);
     }
 
     @Before
     public void setUp(){
         this.repository.deleteAll();
+        this.playsRepository.deleteAll();
+        this.repository2.deleteAll();
+
         this.testPlaybook = new Playbook("test playbook");
+        this.testPlaybookWithPlay = new Playbook("test playbook");
+        this.testPlays = new Plays("test play");
+
+        this.testPlaybookWithPlay.getPlays().add(testPlays);
+
         this.testPlaybookWithId = this.repository.save(testPlaybook);
+        this.testPlaysWithId = this.playsRepository.save(testPlays);
+
         this.id = testPlaybookWithId.getId();
+        this.playId = testPlaysWithId.getId();
+        this.id2 = testPlaybookWithPlay.getId();
+
         this.playbookDTO = this.mapToDTO(testPlaybookWithId);
+        this.playbookWithPlayDTO = this.mapToDTOPlays(testPlaybookWithPlay);
     }
 
     @Test
@@ -122,6 +156,36 @@ public class PlaybookControllerIntegrationTest {
                 .getResponse()
                 .getContentAsString();
         assertEquals(content, this.objectMapper.writeValueAsString(playbookDTO));
+    }
+
+    @Test
+    public void addPlayToPlaybook() throws Exception{
+        String content = this.mock.perform(
+                request(HttpMethod.PUT, "/addPlaysToPlaybook/" + this.id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(playId))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertNotEquals(content, this.objectMapper.writeValueAsString(playbookWithPlayDTO));
+    }
+
+    @Test
+    public void deletePlayFromPlaybook() throws Exception{
+        String content = this.mock.perform(
+                request(HttpMethod.PUT, "/deletePlayFromPlaybook/" + this.id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(playId))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertNotEquals(content, this.objectMapper.writeValueAsString(playbookWithPlayDTO));
     }
 
 }
