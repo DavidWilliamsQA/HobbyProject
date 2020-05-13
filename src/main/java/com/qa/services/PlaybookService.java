@@ -56,6 +56,14 @@ public class PlaybookService {
         return this.mapToDTO(tempPlaybook);
     }
 
+    public PlaybookDTO deletePlays(Long id, Long playId){
+        Playbook deleteFromPlaybook = this.repo.findById(id).orElseThrow(PlaybookNotFoundException::new);
+        Plays findPlay = this.playsRepository.findById(playId).orElseThrow(PlayNotFoundException::new);
+        deleteFromPlaybook.getPlays().remove(findPlay);
+        Playbook tempPlaybook = this.repo.save(deleteFromPlaybook);
+        return this.mapToDTO(tempPlaybook);
+    }
+
     public PlaybookDTO updatePlaybook(Long id, Playbook playbook){
         Playbook update = this.repo.findById(id).orElseThrow(PlaybookNotFoundException::new);
         update.setName(playbook.getName());
