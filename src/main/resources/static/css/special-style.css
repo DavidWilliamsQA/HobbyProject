@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro:200,300,400,600");
+
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.media {
+  /* width: 300px; */
+  /* height: 200px; */
+  /* overflow: hidden; */
+  /* position: relative; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  overflow: hidden;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 270px;      
+}
+
+.offence-button {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 700px;
+  height: 350px;
+  position: relative;
+  display: block;
+}
+
+.test-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10100%0px;
+}
+
+.layer {
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 90%;
+  background: #fff;
+  color: #151e3f;
+  transition: all 0.9s ease;
+}
+
+p {
+  font-family: 'Inconsolata', monospace;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing:1px;
+}
+
+
+/* .media:after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  opacity: 0.3;
+  background: rgba(0, 0, 0, 0);
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 27%,
+    black 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(17%, rgba(0, 0, 0, 0)),
+    color-stop(27%, rgba(0, 0, 0, 0)),
+    color-stop(100%, black)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 27%,
+    black 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 27%,
+    black 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 27%,
+    black 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(17%, rgba(0, 0, 0, 0)),
+    color-stop(27%, rgba(0, 0, 0, 0)),
+    to(black)
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 17%,
+    rgba(0, 0, 0, 0) 27%,
+    black 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+} */
+
+
+.media:hover .layer {
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+@media (max-width: 800px) {
+  body {
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    display: block;
+   
+  }
+}
