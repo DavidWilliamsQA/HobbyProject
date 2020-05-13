@@ -89,5 +89,11 @@ public class PlaybookServiceIntegrationTest {
     @Test
     public void addPlayToPlaybookTest(){
         assertNotEquals(this.service.addPlays(testPlaybookWithId.getId(), testPlay.getId()), this.mapToDTO(this.testPlaybookWithId));
+
+    }
+
+    @Test
+    public void deletePlayFromPlaybookTest(){
+        assertEquals(this.service.deletePlays(testPlaybookWithId.getId(), testPlay.getId()), this.mapToDTO(this.testPlaybookWithId));
     }
 }
