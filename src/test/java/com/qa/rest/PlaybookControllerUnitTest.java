@@ -77,7 +77,7 @@ public class PlaybookControllerUnitTest {
     }
 
     @Test
-    public void deletePlayTestTrue(){
+    public void deletePlaybookTestTrue(){
         when(playbookService.deletePlaybook(3L)).thenReturn(true);
         this.playbookController.deletePlaybook(3L);
         verify(playbookService, times(1)).deletePlaybook(3L);
@@ -108,7 +108,12 @@ public class PlaybookControllerUnitTest {
     public void addPlayToPlaybook(){
         this.playbookController.addPlaysToPlaybook(id, testPlay.getId());
         verify(playbookService, times(1)).addPlays(id, testPlay.getId());
+    }
 
+    @Test
+    public void deletePlayFromPlaybook(){
+        this.playbookController.deletePlayFromPlaybook(id, testPlay.getId());
+        verify(playbookService, times(1)).deletePlays(id, testPlay.getId());
     }
 
 }
