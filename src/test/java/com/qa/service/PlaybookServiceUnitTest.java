@@ -126,6 +126,16 @@ public class PlaybookServiceUnitTest {
         verify(repository,times(1)).save(this.testPlaybook);
     }
 
+    @Test
+    public void deletePlayFromPlaybook(){
+        when(repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlaybook));
+        when(playsRepository.findById(testPlays.getId())).thenReturn(java.util.Optional.ofNullable(testPlays));
+        testPlaybook.getPlays().remove(testPlays);
+        when(this.repository.save(testPlaybook)).thenReturn(testPlaybookWithId);
+        when(this.mapper.map(testPlaybookWithId, PlaybookDTO.class)).thenReturn(testPlaybookWithPlayDTO);
+        assertEquals(this.service.addPlays(id, testPlays.getId()), this.testPlaybookWithPlayDTO);
+        verify(repository,times(1)).save(this.testPlaybook);
+    }
 
 
 }
