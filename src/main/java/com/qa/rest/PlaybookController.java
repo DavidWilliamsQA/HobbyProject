@@ -33,8 +33,13 @@ public class PlaybookController {
     }
 
     @PutMapping("/addPlaysToPlaybook/{id}")
-    public ResponseEntity<PlaybookDTO> addPlaysToPlaybook(@PathVariable Long id, @RequestBody Long play){
-        return ResponseEntity.ok(this.service.addPlays(id, play));
+    public ResponseEntity<PlaybookDTO> addPlaysToPlaybook(@PathVariable Long id, @RequestBody Long playId){
+        return ResponseEntity.ok(this.service.addPlays(id, playId));
+    }
+
+    @PutMapping("/deletePlayFromPlaybook/{id}")
+    public ResponseEntity<PlaybookDTO> deletePlayFromPlaybook(@PathVariable Long id, @RequestBody Long playId){
+        return ResponseEntity.ok(this.service.deletePlays(id, playId));
     }
 
     @DeleteMapping("/deletePlaybook/{id}")
