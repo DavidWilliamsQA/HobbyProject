@@ -8,6 +8,7 @@ function getTodos() {
             console.log(REQ.response);
             console.log(REQ.response.title);
            // document.querySelector("#resp").outerHTML = REQ.response[0].description;
+           // document.createElement("option")
         } else {
             console.log(`Handle Error!`);
         }

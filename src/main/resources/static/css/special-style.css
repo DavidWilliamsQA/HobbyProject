@@ -38,11 +38,17 @@
   display: block;
 }
 
+img.play-button {
+ width: 300px;
+  height: 270px;
+
+}
+
 .test-btn{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10100%0px;
+  height: 100%;
 }
 
 .layer {
