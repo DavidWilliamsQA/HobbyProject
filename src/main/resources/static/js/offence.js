@@ -10,6 +10,5 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
     }
     );
 
-
 let butt1 = document.querySelector("#butt1");
 butt1.addEventListener("click", getTodos);
