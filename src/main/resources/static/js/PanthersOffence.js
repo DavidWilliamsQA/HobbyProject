@@ -1,6 +1,4 @@
-// const REQ = new XMLHttpRequest();
-
-axios.get("http://localhost:8181/getAllPlaybooks").then(
+const first = axios.get("http://localhost:8181/getAllPlaybooks").then(
     res => {
         const select = this.document.getElementById("playbooks");
         for (let opt of res.data) {
@@ -12,7 +10,7 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
     }
     );
 
-axios.get("http://localhost:8181/getAllPlaybooks").then(
+const second = axios.get("http://localhost:8181/getAllPlaybooks").then(
     res => {
         const select = this.document.getElementById("playbooks2");
         for (let opt of res.data) {
