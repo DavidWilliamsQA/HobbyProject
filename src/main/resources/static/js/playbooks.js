@@ -13,7 +13,15 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
     }
     );
 
+function createPlaybook(){
+    let params = `{ "name":"${document.getElementById("playbookName").value}"}`;
+    let obj = JSON.parse(params)
+// let params = {
+//     "name":"test-playbook2"
+// }
+    axios.post("http://localhost:8181/createPlaybooks", obj);
+    console.log(params);
+}
 
-
-let butt1 = document.querySelector("#butt1");
-butt1.addEventListener("click", getTodos);
+let butt1 = document.querySelector("#submitButton");
+butt1.addEventListener("click", createPlaybook);
