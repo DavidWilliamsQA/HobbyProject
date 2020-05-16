@@ -1,14 +1,29 @@
 axios.get("http://localhost:8181/getAllPlaybooks").then(
     res => {
         const select = this.document.getElementById("playbook-list");
+        const section = this.document.getElementById("playbookListSection");
+        // section.className = "gallery";
         for (let opt of res.data) {
             const list = document.createElement("li");
             const aTag = document.createElement("a");
+
+            const divTag1 = document.createElement("div");
+            const divTag2 = document.createElement("div");
+            const divTag3 = document.createElement("div");
+            const pTag = document.createElement("p");
+
             aTag.textContent = opt.name;
             aTag.href = "#";
+
             // list.className = "nav-item";
+
+            divTag3.appendChild(pTag);
+            divTag2.appendChild(divTag3);
+            divTag1.appendChild(divTag2);
             list.appendChild(aTag);
-            select.appendChild(list)
+            select.appendChild(list);
+            section.appendChild(select);
+            section.appendChild(divTag1);
         }
     }
     );
