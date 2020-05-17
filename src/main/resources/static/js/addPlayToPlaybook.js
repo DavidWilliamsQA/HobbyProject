@@ -1,15 +1,28 @@
-function addPlayToPlaybook (){
-    console.log("the function is called")
-    let e = document.getElementById("playbooks");
-    let strUser = e.options[e.selectedIndex].value;
-    console.log(strUser)
+function addPlayToPlaybook (buttId){
 
-    let id = 1;
+let e;
+    if (buttId == "1" || buttId == "5" ||buttId == "9" ||buttId == "13" ){
+        e = document.getElementById("playbooks");
+    }
+    else if (buttId == "2" || buttId == "6" ||buttId == "10" ||buttId == "14" ){
+        e = document.getElementById("playbooks2");
+    }
+    else if (buttId == "3" || buttId == "7" ||buttId == "11" ||buttId == "15" ){
+        e = document.getElementById("playbooks3");
+    }
+    else if (buttId == "4" || buttId == "8" ||buttId == "12" ||buttId == "16" ){
+        e = document.getElementById("playbooks4");
+    }
+
+    console.log("the button pressed is" + buttId);
+
+    let playbookSelected = e.options[e.selectedIndex].value;
+    console.log("the playbook selected has the playbook id of " + playbookSelected)
 
     axios({
         method: 'PUT',
-        url: "http://localhost:8181/addPlaysToPlaybook/" + strUser,
-        data: JSON.stringify(id),
+        url: "http://localhost:8181/addPlaysToPlaybook/" + playbookSelected,
+        data: JSON.stringify(buttId),
         headers:{'Content-Type': 'application/json; charset=utf-8'}
     })
         .then( (response) => {
@@ -21,5 +34,3 @@ function addPlayToPlaybook (){
 
 }
 
-let butt1 = document.querySelector("#butt1");
-butt1.addEventListener("click", addPlayToPlaybook);
