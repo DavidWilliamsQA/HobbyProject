@@ -75,8 +75,20 @@
 						<input type="submit" value="Submit" class="btn btn-primary" id="submitButton">
 					</form>
 
-				</div>
+                    <div class="row justify-content-start pb-3">
+                        <div class="col-md-12 heading-section ftco-animate">
+                            <h2 class="mb-4">Delete a Playbook</h2>
+                        </div>
 
+                        <form>
+                        <label for="playbooks">Select the Playbook to delete</label><br>
+                        <select id="playbooks">
+                        </select><br>
+                        <button class="btn btn-primary" id="deletePlaybook">Delete</button>
+                        </form>
+
+				</div>
+                </div>
 			</div>
 		</section>
 
@@ -185,6 +197,7 @@
   <script src="js/main.js"></script>
   <script src="js/playbooks.js"></script>
   <script src="js/grid-picture-display.js"></script>
+  <script src="js/delete-playbook.js"></script>
 
 
 
