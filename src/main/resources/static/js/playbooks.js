@@ -1,52 +1,60 @@
 axios.get("http://localhost:8181/getAllPlaybooks").then(
     res => {
-        const select = this.document.getElementById("playbook-list");
-        for (let opt of res.data) {
-            const list = document.createElement("li");
-            const aTag = document.createElement("a");
-            aTag.textContent = opt.name;
-            // aTag.href = "#";
-            list.className = "nav-item";
-            list.appendChild(aTag);
-            select.appendChild(list)
+        const div = this.document.getElementById("tab");
+        const first = this.document.getElementById("firstdiv");
+        console.log(res.data);
+       for(let opt of res.data){
+           const button = document.createElement("button");
+           const div2 = document.createElement("div");
+           const h3 = document.createElement("h3");
+
+           let playbookName = opt.name;
+
+           button.className = "tablinks";
+           button.textContent = playbookName;
+
+           div2.className = "tabcontent";
+           div2.id = opt.id;
+
+           div2.appendChild(h3);
+           h3.textContent = playbookName;
+           for(let plays of opt.plays){
+               const p = document.createElement("p");
+
+               console.log(plays);
+
+               p.textContent = plays.description;
+               div2.appendChild(p);
+           }
+
+           div.appendChild(button);
+
+           first.appendChild(div2);
+           button.onclick = function openCity(evt){
+               var i, tabcontent, tablinks;
+               tabcontent = document.getElementsByClassName("tabcontent");
+               for (i = 0; i < tabcontent.length; i++) {
+                   tabcontent[i].style.display = "none";
+               }
+               tablinks = document.getElementsByClassName("tablinks");
+               for (i = 0; i < tablinks.length; i++) {
+                   tablinks[i].className = tablinks[i].className.replace(" active", "");
+               }
+               document.getElementById(opt.id).style.display = "block";
+               evt.currentTarget.className += " active";
+           };
         }
     }
     );
 
-axios.get("http://localhost:8181/getAllPlaybooks").then(
-    res => {
-        const select = this.document.getElementById("playbooks2");
-        for (let opt of res.data) {
-            const option = document.createElement("option");
-            option.value = opt.id;
-            option.textContent = opt.name;
-            select.appendChild(option);
-        }
-    }
-);
+function createPlaybook(){
+    let params = `{ "name":"${document.getElementById("playbookName").value}"}`;
+    let obj = JSON.parse(params)
 
-axios.get("http://localhost:8181/getAllPlaybooks").then(
-    res => {
-        const select = this.document.getElementById("playbooks3");
-        for (let opt of res.data) {
-            const option = document.createElement("option");
-            option.value = opt.id;
-            option.textContent = opt.name;
-            select.appendChild(option);
-        }
-    }
-);
-axios.get("http://localhost:8181/getAllPlaybooks").then(
-    res => {
-        const select = this.document.getElementById("playbooks4");
-        for (let opt of res.data) {
-            const option = document.createElement("option");
-            option.value = opt.id;
-            option.textContent = opt.name;
-            select.appendChild(option);
-        }
-    }
-);
+    axios.post("http://localhost:8181/createPlaybooks", obj);
+    console.log(params);
+}
 
-let butt1 = document.querySelector("#butt1");
-butt1.addEventListener("click", getTodos);
+
+let butt1 = document.querySelector("#submitButton");
+butt1.addEventListener("click", createPlaybook);

@@ -8,7 +8,13 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
             select.appendChild(option);
         }
     }
-    );
+);
 
-let butt1 = document.querySelector("#butt1");
-butt1.addEventListener("click", getTodos);
+function deletePlaybook() {
+    let e = document.getElementById("playbooks");
+    let playbook = e.options[e.selectedIndex].value;
+    let res = axios.delete("http://localhost:8181/deletePlaybook/" + playbook);
+}
+
+let deleteButton = document.querySelector("#deletePlaybook");
+deleteButton.addEventListener("click", deletePlaybook);
