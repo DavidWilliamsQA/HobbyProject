@@ -21,8 +21,6 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
            for(let plays of opt.plays){
                const p = document.createElement("p");
 
-               console.log(plays);
-
                p.textContent = plays.description;
                div2.appendChild(p);
            }
