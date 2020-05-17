@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/panthers-offence.css">
+      <link rel="stylesheet" href="css/style-tab-test.css" />
 
   </head>
   <body>
@@ -71,11 +72,23 @@
 					<form>
 						<label for="playbookName">Playbook Name</label><br>
 						<input type="text" id="playbookName">
-						<input type="submit" value="Submit" class="btn btn-primary">
+						<input type="submit" value="Submit" class="btn btn-primary" id="submitButton">
 					</form>
-                    <a href="" class="nav-item">text text</a>
-				</div>
 
+                    <div class="row justify-content-start pb-3">
+                        <div class="col-md-12 heading-section ftco-animate">
+                            <h2 class="mb-4">Delete a Playbook</h2>
+                        </div>
+
+                        <form>
+                        <label for="playbooks">Select the Playbook to delete</label><br>
+                        <select id="playbooks">
+                        </select><br>
+                        <button class="btn btn-primary" id="deletePlaybook">Delete</button>
+                        </form>
+
+				</div>
+                </div>
 			</div>
 		</section>
 
@@ -84,24 +97,19 @@
 			  style="background-image: url(images/play-background1.jpg);"
 			  data-stellar-background-ratio="0.5"
 	  >
-		  <
+
 	  </section>
 
-	  <section class="ftco-section">
-		  <div class="container">
-			  <div class="row justify-content-start pb-3">
-				  <div class="col-md-12 heading-section ftco-animate">
-					  <h2 class="mb-4">List of Playbooks</h2>
-				  </div>
+	  <section class="ftco-section" id="playbookListSection">
+<!--		  <div class="container">-->
+			  <div id="firstdiv">
+                      <div class="col-md-12 heading-section ftco-animate">
+                          <h2 class="mb-4">List of Playbooks</h2>
+                      </div>
+                            <div class="tab" id="tab">
+                            </div>
 
-				  <div class="row container mb-3">
-					  <ul id="playbook-list" class="mb-3">
-						  <a class="close"></a>
-					  </ul>
-				  </div> <!-- / row -->
-			  </div>
-
-		  </div>
+              </div>
 	  </section>
 		
 		<section class="ftco-subscribe img" style="background-image: url(images/bg_1.jpg);">
@@ -188,6 +196,9 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/playbooks.js"></script>
+  <script src="js/grid-picture-display.js"></script>
+  <script src="js/delete-playbook.js"></script>
+
 
 
   </body>
