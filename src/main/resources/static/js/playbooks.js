@@ -21,7 +21,11 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
            for(let plays of opt.plays){
                const p = document.createElement("p");
                const img = document.createElement("img");
-
+                // IF YOU WANT TO IMPLEMENT THE DELETE THEN YOU SHOULD
+               //ADD THE DELETE BUTTONS HERE AS WELL SO THAT THEY CAN
+               //APPEAR WITH EACH PICTURE AND YOU CAN STORE THE CORRESPONDING
+               //BUTTON VALUES IN IT THAT WILL CORRESPOND TO THE PLAY THAT
+               //IS TO BE DELETED
                p.textContent = plays.description;
                img.src = "images/Play" + plays.id + ".png";
                div2.appendChild(p);
