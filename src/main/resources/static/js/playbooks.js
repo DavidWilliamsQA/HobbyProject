@@ -20,9 +20,12 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
            h3.textContent = playbookName;
            for(let plays of opt.plays){
                const p = document.createElement("p");
+               const img = document.createElement("img");
 
                p.textContent = plays.description;
+               img.src = "images/Play" + plays.id + ".png";
                div2.appendChild(p);
+               div2.appendChild(img);
            }
 
            div.appendChild(button);
