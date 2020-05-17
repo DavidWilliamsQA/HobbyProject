@@ -1,29 +1,48 @@
 axios.get("http://localhost:8181/getAllPlaybooks").then(
     res => {
-        const select = this.document.getElementById("playbook-list");
-        const section = this.document.getElementById("playbookListSection");
-        // section.className = "gallery";
-        for (let opt of res.data) {
-            const list = document.createElement("li");
-            const aTag = document.createElement("a");
+        const div = this.document.getElementById("tab");
+        const first = this.document.getElementById("firstdiv");
+        console.log(res.data);
+       for(let opt of res.data){
+           const button = document.createElement("button");
+           const div2 = document.createElement("div");
+           const h3 = document.createElement("h3");
 
-            const divTag1 = document.createElement("div");
-            const divTag2 = document.createElement("div");
-            const divTag3 = document.createElement("div");
-            const pTag = document.createElement("p");
+           let playbookName = opt.name;
 
-            aTag.textContent = opt.name;
-            aTag.href = "#";
+           button.className = "tablinks";
+           button.textContent = playbookName;
 
-            // list.className = "nav-item";
+           div2.className = "tabcontent";
+           div2.id = opt.id;
 
-            divTag3.appendChild(pTag);
-            divTag2.appendChild(divTag3);
-            divTag1.appendChild(divTag2);
-            list.appendChild(aTag);
-            select.appendChild(list);
-            section.appendChild(select);
-            section.appendChild(divTag1);
+           div2.appendChild(h3);
+           h3.textContent = playbookName;
+           for(let plays of opt.plays){
+               const p = document.createElement("p");
+
+               console.log(plays);
+
+               p.textContent = plays.description;
+               div2.appendChild(p);
+           }
+
+           div.appendChild(button);
+
+           first.appendChild(div2);
+           button.onclick = function openCity(evt){
+               var i, tabcontent, tablinks;
+               tabcontent = document.getElementsByClassName("tabcontent");
+               for (i = 0; i < tabcontent.length; i++) {
+                   tabcontent[i].style.display = "none";
+               }
+               tablinks = document.getElementsByClassName("tablinks");
+               for (i = 0; i < tablinks.length; i++) {
+                   tablinks[i].className = tablinks[i].className.replace(" active", "");
+               }
+               document.getElementById(opt.id).style.display = "block";
+               evt.currentTarget.className += " active";
+           };
         }
     }
     );
@@ -31,12 +50,26 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
 function createPlaybook(){
     let params = `{ "name":"${document.getElementById("playbookName").value}"}`;
     let obj = JSON.parse(params)
-// let params = {
-//     "name":"test-playbook2"
-// }
+
     axios.post("http://localhost:8181/createPlaybooks", obj);
     console.log(params);
 }
+
+
+// button.addEventListener("click", function(evt, playbookName){
+//     var i, tabcontent, tablinks;
+//     tabcontent = document.getElementsByClassName("tabcontent");
+//     for (i = 0; i < tabcontent.length; i++) {
+//         tabcontent[i].style.display = "none";
+//     }
+//     tablinks = document.getElementsByClassName("tablinks");
+//     for (i = 0; i < tablinks.length; i++) {
+//         tablinks[i].className = tablinks[i].className.replace(" active", "");
+//     }
+//     document.getElementById(`"${opt.name}"`).style.display = "block";
+//     evt.currentTarget.className += " active";
+// });
+
 
 let butt1 = document.querySelector("#submitButton");
 butt1.addEventListener("click", createPlaybook);
