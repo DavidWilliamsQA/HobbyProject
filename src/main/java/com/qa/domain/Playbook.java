@@ -38,8 +38,8 @@ public class Playbook {
         return id;
     }
 
-    public void setId(Long playbook_id) {
-        this.id = playbook_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

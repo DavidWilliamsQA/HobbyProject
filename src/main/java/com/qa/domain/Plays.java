@@ -31,8 +31,8 @@ public class Plays{
         return id;
     }
 
-    public void setId(Long play_id) {
-        this.id = play_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescription() {
