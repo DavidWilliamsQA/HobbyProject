@@ -1,7 +1,9 @@
-Coverage: SonarQube-86.9%, JUnit-90%
+Coverage: SonarQube-97.2%, JUnit-98%
 # Hobby Project (Playbook Pro)
 
-This project took advantage of various technologies such as Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit, Selenium, TestNG and Mockito to create an inventory management system. The project used Java as its code base, and was packaged using a Continuous Integration (CI) pipeline tool, Jenkins.
+This project took advantage of various technologies such as Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, Spring, Javascript, CSS, HTML, JUnit, Selenium, TestNG and Mockito to create a full-stack application. 
+
+The project used Java as its code base using the Spring framework. It also consisted of a front-end website which controlled and interacted with the back-end via API calls. The application was packaged using a Continuous Integration (CI) pipeline tool, Jenkins.
 
 The Project Documentation folder contains the surefire report, extent report, risk assessment, the ERD and the presentation.
 
