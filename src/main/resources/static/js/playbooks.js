@@ -11,6 +11,7 @@ axios.get("http://localhost:8181/getAllPlaybooks").then(
            let playbookName = opt.name;
 
            button.className = "tablinks";
+           button.id = playbookName;
            button.textContent = playbookName;
 
            div2.className = "tabcontent";
