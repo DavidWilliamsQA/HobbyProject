@@ -35,7 +35,7 @@ The tests were written using Mockito, TestNG, Selenium and Junit. These test cov
 
 After the project has been forked and opened in the IDE. Go to the project folder which the project is located and open the command window in the folder. You should then be pointing to the location where the project is in your command window. Preform the following command
 
-`mvn clean install`
+`mvn clean package`
 
 The output should be as follows:
 
@@ -43,9 +43,45 @@ The output should be as follows:
 
 After this is done, the jar file can now be run using the following command in the command line:
 
-`java -jar target/DavidWilliams-SoftwareMarch16-jar-with-dependencies.jar`
+`java -jar target/DavidWilliams-SoftwareMarch16-HobbyProject-jar-with-dependencies.jar`
 
-The program should then prompt you to enter the username and password for the database and that's it! It is up and running.
+The program will then be up and running.
+The front-end for the application can then be accessed by `http://localhost:8181/index.html`
+ 
+![](Documentation/playbookHomePage.jpg) 
+
+The picture above is what will appear if you run the application and go to the correct webpage.
+
+As you can see from the nav bar, there are three options. The home page, the playbooks page and the Teams page.
+
+When you navigate to each page there are different options. On the playbooks page you can either create a new playbook, delete an existing playbook as shown below.
+ 
+ ![](Documentation/playbookCRUD.jpg)
+ 
+ You can view the playbooks that are available with the plays that are currently in them. You can choose whether to delete a play from a playbook here as well.
+ 
+ ![](Documentation/playbookDelete.jpg)
+ 
+ In the teams section, you can see the available teams and select which team you would like to pick.
+ 
+ ![](Documentation/teams.jpg)
+ 
+ When each team is selected you can select between the offence and defence to view their respective playbooks. 
+ 
+ ![](Documentation/plays.jpg)
+ 
+ After either the offensive or defensive playbook is selected, you can then view the plays in the respective team playbooks as seen below.
+ 
+ ![](Documentation/playList.jpg)
+ 
+ A play can now be selected and added to any playbook via the dropdown as shown above
+ 
+ ![](Documentation/playSelected.jpg)
+ 
+  
+
+ 
+ 
 
 
 ## Built With
