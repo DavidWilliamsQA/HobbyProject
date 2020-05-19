@@ -14,3 +14,4 @@ INSERT INTO plays(description) VALUES ('Lions-Dollar_3_2_6-DB_Fire_2');
 INSERT INTO plays(description) VALUES ('Lions-Dollar_3_2_6-Cover_3_Cloud_Show_2');
 INSERT INTO plays(description) VALUES ('Lions-Dime-Tampa_2');
 INSERT INTO plays(description) VALUES ('Lions-Dime-Overload_3_Show_2');
+INSERT INTO playbook(name) VALUES ('Daves Playbook');
