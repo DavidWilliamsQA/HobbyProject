@@ -50,7 +50,7 @@ The front-end for the application can then be accessed by `http://localhost:8181
  
 ![](Documentation/playbookHomePage.jpg) 
 
-The picture above is what will appear if you run the application and go to the correct webpage.
+The picture above will appear if you run the application and go to the correct webpage.
 
 As you can see from the nav bar, there are three options. The home page, the playbooks page and the Teams page.
 
