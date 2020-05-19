@@ -1,0 +1,16 @@
+INSERT INTO plays(description) VALUES ('Panthers-SingleBack_DeuceClose-HBStretch');
+INSERT INTO plays(description) VALUES ('Panthers-SingleBack_DeuceClose-CounterY');
+INSERT INTO plays(description) VALUES ('Panthers-SingleBack_WingTight-Mesh');
+INSERT INTO plays(description) VALUES ('Panthers-PistolWeak-PA-BootY_Wheel');
+INSERT INTO plays(description) VALUES ('Panthers-3_4-Solid-OLB_Blitz');
+INSERT INTO plays(description) VALUES ('Panthers-3_4-Solid-Cover_4_Quarters');
+INSERT INTO plays(description) VALUES ('Panthers-3_4-Under-Cover_2_Sink');
+INSERT INTO plays(description) VALUES ('Panthers-3_4-Under-Pinch_Buck_0');
+INSERT INTO plays(description) VALUES ('Lions-Gun_Bunch_TE-Curl_Flat_Corner');
+INSERT INTO plays(description) VALUES ('Lions-Gun_Bunch_TE-HB_Off_Tackle');
+INSERT INTO plays(description) VALUES ('Lions-Spread_Y_Slot_Weak-RPO_Zone_Peak');
+INSERT INTO plays(description) VALUES ('Lions-Spread_Y_Slot_Weak-Smash_Digs');
+INSERT INTO plays(description) VALUES ('Lions-Dollar_3_2_6-DB_Fire_2');
+INSERT INTO plays(description) VALUES ('Lions-Dollar_3_2_6-Cover_3_Cloud_Show_2');
+INSERT INTO plays(description) VALUES ('Lions-Dime-Tampa_2');
+INSERT INTO plays(description) VALUES ('Lions-Dime-Overload_3_Show_2');
