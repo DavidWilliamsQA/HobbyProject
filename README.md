@@ -64,26 +64,20 @@ When you navigate to each page there are different options. On the playbooks pag
  
  In the teams section, you can see the available teams and select which team you would like to pick.
  
- ![](Documentation/teams.jpg)
+ ![](Documentation/teams.JPG)
  
  When each team is selected you can select between the offence and defence to view their respective playbooks. 
  
- ![](Documentation/plays.jpg)
+ ![](Documentation/plays.JPG)
  
  After either the offensive or defensive playbook is selected, you can then view the plays in the respective team playbooks as seen below.
  
- ![](Documentation/playList.jpg)
+ ![](Documentation/playList.JPG)
  
  A play can now be selected and added to any playbook via the dropdown as shown above
  
- ![](Documentation/playSelected.jpg)
+ ![](Documentation/playSelected.JPG)
  
-  
-
- 
- 
-
-
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
