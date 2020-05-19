@@ -3,7 +3,7 @@ Coverage: SonarQube-86.9%, JUnit-90%
 
 This project took advantage of various technologies such as Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit, Selenium, TestNG and Mockito to create an inventory management system. The project used Java as its code base, and was packaged using a Continuous Integration (CI) pipeline tool, Jenkins.
 
-The Project Documentation folder contains the surefire report, extent report, risk assessment and the presentation.
+The Project Documentation folder contains the surefire report, extent report, risk assessment, the ERD and the presentation.
 
 The Kanban Board used for this project was the GitHib Project board that is connected to this project.
 
