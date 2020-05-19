@@ -5,7 +5,7 @@ This project took advantage of various technologies such as Google Cloud Platfor
 
 The Project Documentation folder contains the surefire report, extent report, risk assessment and the presentation.
 
-the Kanban Board used for this project was the GitHib Project board that is connected to this project.
+The Kanban Board used for this project was the GitHib Project board that is connected to this project.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ Git has to also be installed unto the computer so that the project can be cloned
 
 ## Testing
 
-The tests were written using Mockito and Junit. These test covered a good majority of the program that could be tested this inclused the controllers, the services and the domain classes. 
+The tests were written using Mockito, TestNG, Selenium and Junit. These test covered a good majority of the program that could be tested this inclused the controllers, the services and the domain classes. 
 
 ## Deployment
 
@@ -59,6 +59,7 @@ The program should then prompt you to enter the username and password for the da
 * [SonarQube](https://www.sonarqube.org/) - Static Analysis Tool
 * [Nexus](https://www.sonatype.com/product-nexus-repository) - Artefact Repository
 * [Git](https://git-scm.com/) - Version Control System
+* [Selenium](https://www.selenium.dev/projects/) - Automation Testing tool
 
 ## Versioning
 
@@ -66,16 +67,10 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Chris Perrins** - *Initial code base* [christophperrins](https://github.com/christophperrins)
-* **David Williams** - *Extended the inital fork and implemented more features* [DavidWilliamsQA](https://github.com/DavidWilliamsQA)
+* **David Williams** -  [DavidWilliamsQA](https://github.com/DavidWilliamsQA)
 
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
 
 *For help in [Choosing a license](https://choosealicense.com/)*
-
-## Acknowledgments
-* **Chris Perrins** [christophperrins](https://github.com/christophperrins) for providing the initial code base.
-* **Nicholas Johnson** [nickrstewarttds](https://github.com/nickrstewarttds) for training in the fundamentals used in this project.
-
