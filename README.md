@@ -48,42 +48,36 @@ After this is done, the jar file can now be run using the following command in t
 The program will then be up and running.
 The front-end for the application can then be accessed by `http://localhost:8181/index.html`
  
-![](Documentation/playbookHomePage.jpg) 
+![](Documentation/playbookHomePage.JPG) 
 
-The picture above is what will appear if you run the application and go to the correct webpage.
+The picture above will appear if you run the application and go to the correct webpage.
 
 As you can see from the nav bar, there are three options. The home page, the playbooks page and the Teams page.
 
 When you navigate to each page there are different options. On the playbooks page you can either create a new playbook, delete an existing playbook as shown below.
  
- ![](Documentation/playbookCRUD.jpg)
+ ![](Documentation/playbookCRUD.JPG)
  
  You can view the playbooks that are available with the plays that are currently in them. You can choose whether to delete a play from a playbook here as well.
  
- ![](Documentation/playbookDelete.jpg)
+ ![](Documentation/playbookDelete.JPG)
  
  In the teams section, you can see the available teams and select which team you would like to pick.
  
- ![](Documentation/teams.jpg)
+ ![](Documentation/teams.JPG)
  
  When each team is selected you can select between the offence and defence to view their respective playbooks. 
  
- ![](Documentation/plays.jpg)
+ ![](Documentation/plays.JPG)
  
  After either the offensive or defensive playbook is selected, you can then view the plays in the respective team playbooks as seen below.
  
- ![](Documentation/playList.jpg)
+ ![](Documentation/playList.JPG)
  
  A play can now be selected and added to any playbook via the dropdown as shown above
  
- ![](Documentation/playSelected.jpg)
+ ![](Documentation/playSelected.JPG)
  
-  
-
- 
- 
-
-
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
