@@ -39,11 +39,15 @@ After the project has been forked and opened in the IDE. Go to the project folde
 
 The output should be as follows:
 
-![](Documentation/build%20success.JPG)
+![](Documentation/buildSuccess.JPG)
 
 After this is done, the jar file can now be run using the following command in the command line:
 
-`java -jar target/DavidWilliams-SoftwareMarch16-HobbyProject-jar-with-dependencies.jar`
+`mvn spring-boot:run`
+
+The output should be as follows:
+
+![](Documentation/SpringStart.JPG)
 
 The program will then be up and running.
 The front-end for the application can then be accessed by `http://localhost:8181/index.html`
@@ -100,6 +104,12 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **David Williams** -  [DavidWilliamsQA](https://github.com/DavidWilliamsQA)
+
+## Acknowledgements
+* **Savannah** - [savannahvaith](https://github.com/savannahvaith) - for JavaScript training
+* **Nicholas** - [nickrstewarttds](https://github.com/nickrstewarttds) - For initial Java training
+* **Jordan** - [JHarry444](https://github.com/JHarry444) - For help with Spring
+* **Tadas** - [tvaidotas](https://github.com/tvaidotas) - For initial introduction to Spring training
 
 ## License
 
