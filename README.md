@@ -9,6 +9,8 @@ The Project Documentation folder contains the surefire report, extent report, ri
 
 The Kanban Board used for this project was the GitHib Project board that is connected to this project.
 
+My presentation is available on [Google slides](https://docs.google.com/presentation/d/1zeizZueT4eHYyIuG7O2Bo7Je5zQMBOyvixDOP8UDHhQ/edit?usp=sharing)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
